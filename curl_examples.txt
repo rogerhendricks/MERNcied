@@ -1,0 +1,10 @@
+Signup a user
+curl -X POST localhost:4000/api/user/signup \
+-H "Content-Type: application/json" \
+-d '{"email": "roger@gmail.com", "password": "ABC123488fdfdf!"}'
+
+login a user
+curl -X POST localhost:4000/api/user/login \
+-H "Content-Type: application/json" \
+-d '{"email": "roger@gmail.poo", "password": "ABC123488fdfdf!"}'
+
