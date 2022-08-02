@@ -9,10 +9,15 @@ const leadSchema = new Schema({
         type:String,
         required: true
     },
-    manufacturer: [manufacturer],
-    type: {
+    manufacturer: {
         type: String,
-        required: true
+        enum: ['Abbott','Boston Scientific', 'Biotronik', 'Medtronic', 'Sorin'],
+        default: undefined
+    },
+    placement: {
+        type: String,
+        enum: ['RA', 'RV', 'LV', 'Epi'],
+        required: false
     },
     mri: {
         type: Boolean,
