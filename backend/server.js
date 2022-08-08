@@ -26,7 +26,11 @@ app.use('/api/user', userRoutes)
 app.use('/api/device', deviceRoutes)
 app.use('/api/lead', leadRoutes)
 app.use('/api/client', clientRoutes)
+<<<<<<< HEAD
 // app.use('api/service', serviceRoutes)
+=======
+app.use('api/service', serviceRoutes)
+>>>>>>> a0cadadfcd2f30de33a896a40f50afb9f319e543
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
