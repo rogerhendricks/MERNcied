@@ -8,15 +8,15 @@ const createToken = function(_id, role) {
 
 // login a user
 const loginUser = async (req, res) => {
-  const {email, password} = req.body
+  const {email, password, role} = req.body
 
   try {
-    const user = await User.login(email, password)
+    const user = await User.login(email, password, role)
 
     // create a token
     const token = createToken(user._id, user.role)
 
-    res.status(200).header('x-auth-token', token).send({email, token})
+    res.status(200).header('x-auth-token', token).send({email, token, role})
   } catch (error) {
     res.status(400).json({error: error.message})
   }
@@ -24,7 +24,7 @@ const loginUser = async (req, res) => {
 
 // signup a user
 const signupUser = async (req, res) => {
-  const {email, password} = req.body
+  const {email, password, role} = req.body
 
   try {
     const user = await User.signup(email, password, role)

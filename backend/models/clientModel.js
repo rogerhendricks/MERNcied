@@ -1,5 +1,5 @@
 const device =  require('./deviceModel');
-const lead  = require('./leadModel');
+const lead  = require('./leadModels');
 
 const mongoose = require('mongoose')
 
@@ -19,8 +19,16 @@ const clientSchema = new Schema({
         required: true
     },
     
-    device: [device],
-    lead: [lead],
+    device:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "device"
+    },
+    lead: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "lead"
+        }
+    ],
 })
 
 module.exports = mongoose.model('client', clientSchema);

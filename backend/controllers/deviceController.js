@@ -2,7 +2,7 @@ const Device = require('../models/deviceModel')
 const mongoose = require('mongoose')
 
 
-// get a single workout
+// get a single device
 const getDevice = async (req, res) => {
     const { _id } = req.params
 
@@ -19,7 +19,7 @@ const getDevice = async (req, res) => {
     res.status(200).json(device)
 }
 
-// create new workout
+// create new device
 const createDevice = async (req, res) => {
     const {model, manufacturer,deviceType, mri, hazard} = req.body
     let emptyFields = []
@@ -52,7 +52,7 @@ const createDevice = async (req, res) => {
     }
     }
 
-// update a workout
+// update a device
 const updateDevice = async (req, res) => {
     const { _id } = req.params
 
@@ -82,9 +82,21 @@ const deleteDevice = async (req, res) => {
         return res.status(400).json({error: 'No such device'})
     }
 }
+const findAll = (req, res) => {
+    Device.find()
+    .then(device => {
+        res.send(device);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message
+        });
+    });
+};
+
 module.exports = {
     createDevice, 
     getDevice, 
     updateDevice,
-    deleteDevice
+    deleteDevice,
+    findAll
 }
